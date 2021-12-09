@@ -20,8 +20,10 @@ FROM alpine:3.14.3 as runtime
 
 RUN apk add --no-cache ca-certificates
 
-COPY --from=builder / /ns/edlp/
+COPY --from=builder /app/sibling-gin-server /ns/edlp/
 
 WORKDIR /ns/edlp
+
+EXPOSE 3440
 
 CMD ["./sibling-gin-server"]
